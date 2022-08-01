@@ -4,6 +4,7 @@
     package="com.ji.remotedemo">
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
 
     <application
         android:allowBackup="false"
@@ -20,7 +21,10 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.ji.remotedemo.ServiceFragment$FgService"
-            android:exported="true"/>
+        <service android:name="com.ji.remotedemo.ServiceFragment$FgService" android:exported="true">
+            <intent-filter>
+                <action android:name="com.ji.remotedemo.FgService"/>
+            </intent-filter>
+        </service>
     </application>
 </manifest>
