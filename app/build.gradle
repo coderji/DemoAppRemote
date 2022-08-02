@@ -5,7 +5,7 @@ android {
     buildToolsVersion "32.0.0"
     defaultConfig {
         applicationId "com.ji.remotedemo"
-        minSdkVersion 29
+        minSdkVersion 30
         targetSdkVersion 32
         versionCode 1
         versionName "1.0"
@@ -20,6 +20,6 @@ android {
 
 dependencies {
     compileOnly files('libs/Android_R_HiddenApi.jar')
-    implementation 'androidx.fragment:fragment:1.2.4'
     implementation 'androidx.biometric:biometric:1.0.1'
+    implementation 'androidx.fragment:fragment:1.2.4'
 }
