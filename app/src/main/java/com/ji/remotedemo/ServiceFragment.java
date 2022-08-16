@@ -11,6 +11,7 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.view.LayoutInflater;
@@ -29,7 +30,6 @@ public class ServiceFragment extends BaseFragment {
     private static final String TAG = "ServiceFragment";
     private IRemoteDemo mRemoteDemo;
     private TextView mDataView;
-    private Handler mHandler = new Handler();
 
     @Nullable
     @Override
@@ -90,12 +90,7 @@ public class ServiceFragment extends BaseFragment {
         @Override
         public void dataCallback(final String data) throws RemoteException {
             LogUtils.v(TAG, "dataCallback data:" + data);
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    mDataView.setText(data);
-                }
-            });
+            new Handler(Looper.getMainLooper()).post(() -> mDataView.setText(data));
         }
     };
 

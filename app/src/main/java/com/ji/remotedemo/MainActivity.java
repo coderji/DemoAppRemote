@@ -14,7 +14,7 @@ public class MainActivity extends FragmentActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.main_content, new ServiceFragment())
+                .replace(R.id.main_content, new ServiceFragment())
                 .commit();
     }
 }
