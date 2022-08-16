@@ -1,4 +1,4 @@
-package com.ji.util;
+package com.ji.utils;
 
 import androidx.fragment.app.Fragment;
 

@@ -1,12 +1,14 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+}
 
 android {
-    compileSdkVersion 32
+    compileSdk 32
     buildToolsVersion "32.0.0"
     defaultConfig {
         applicationId "com.ji.remotedemo"
-        minSdkVersion 30
-        targetSdkVersion 32
+        minSdk 30
+        targetSdk 32
         versionCode 1
         versionName "1.0"
     }

@@ -1,19 +1,20 @@
-package com.ji.util;
+package com.ji.utils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class Reflect {
-    private static final String TAG = "Reflect";
+public class ReflectUtils {
+    private static final String TAG = "ReflectUtils";
 
     public static Method getMethod(Class cls, String methodName, Class<?>... parameterTypes) {
         try {
+            @SuppressWarnings("unchecked")
             Method method = cls.getDeclaredMethod(methodName, parameterTypes);
             method.setAccessible(true);
             return method;
         } catch (NoSuchMethodException e) {
-            Log.e(TAG, "getMethod", e);
+            LogUtils.e(TAG, "getMethod", e);
         }
         return null;
     }
@@ -22,7 +23,7 @@ public class Reflect {
         try {
             return getMethod(Class.forName(cls), methodName, parameterTypes);
         } catch (ClassNotFoundException e) {
-            Log.e(TAG, "getMethod", e);
+            LogUtils.e(TAG, "getMethod", e);
         }
         return null;
     }
@@ -32,7 +33,7 @@ public class Reflect {
             try {
                 return method.invoke(receiver, args);
             } catch (IllegalAccessException | InvocationTargetException e) {
-                Log.e(TAG, "invoke", e);
+                LogUtils.e(TAG, "invoke", e);
             }
         }
         return null;
@@ -44,7 +45,7 @@ public class Reflect {
             field.setAccessible(true);
             return field.get(receiver);
         } catch (NoSuchFieldException | IllegalAccessException e) {
-            Log.e(TAG, "getField", e);
+            LogUtils.e(TAG, "getField", e);
         }
         return null;
     }
@@ -53,7 +54,7 @@ public class Reflect {
         try {
             return getField(Class.forName(cls), fieldName, receiver);
         } catch (ClassNotFoundException e) {
-            Log.e(TAG, "getField", e);
+            LogUtils.e(TAG, "getField", e);
         }
         return null;
     }
@@ -64,7 +65,7 @@ public class Reflect {
             field.setAccessible(true);
             field.set(receiver, value);
         } catch (NoSuchFieldException | IllegalAccessException e) {
-            Log.e(TAG, "setField", e);
+            LogUtils.e(TAG, "setField", e);
         }
     }
 
@@ -72,7 +73,7 @@ public class Reflect {
         try {
             setField(Class.forName(cls), fieldName, receiver, value);
         } catch (ClassNotFoundException e) {
-            Log.e(TAG, "setField", e);
+            LogUtils.e(TAG, "setField", e);
         }
     }
 }

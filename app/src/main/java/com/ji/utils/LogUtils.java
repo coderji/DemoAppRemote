@@ -1,29 +1,27 @@
-package com.ji.util;
+package com.ji.utils;
+
+import android.util.Log;
 
 import com.ji.remotedemo.BuildConfig;
 
-public class Log {
+public class LogUtils {
     private static final String TAG = "RemoteDemo";
 
     public static void v(String tag, String msg) {
         if (BuildConfig.DEBUG || android.util.Log.isLoggable(TAG, android.util.Log.VERBOSE)) {
-            android.util.Log.v(TAG, tag + " - " + msg);
+            Log.v(TAG, tag + " - " + msg);
         }
     }
 
     public static void d(String tag, String msg) {
-        android.util.Log.d(TAG, tag + " - " + msg);
-    }
-
-    public static void w(String tag, String msg) {
-        android.util.Log.w(TAG, tag + " - " + msg);
+        Log.d(TAG, tag + " - " + msg);
     }
 
     public static void e(String tag, String msg) {
-        android.util.Log.e(TAG, tag + " - " + msg);
+        Log.e(TAG, tag + " - " + msg);
     }
 
     public static void e(String tag, String msg, Throwable tr) {
-        android.util.Log.e(TAG, tag + " - " + msg, tr);
+        Log.e(TAG, tag + " - " + msg, tr);
     }
 }
